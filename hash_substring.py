@@ -12,10 +12,9 @@ def read_input():
 
     if "F" in ievade: # Ja ievadē ir burts "F"
         with open("tests/06") as file: # Tiek atvērts fails "tests/06" un saglabāts kā file
-            first_line = file.readline().strip()   # Nolasa pirmo rindu, kas satur pattern jeb fragmentu
-            second_line = file.readline().strip()  # Nolasa otro rindu, kas satur text jeb tekstu
+            first_pattern = file.readline().strip()   # Nolasa pirmo rindu, kas satur pattern jeb fragmentu
+            second_text = file.readline().strip()  # Nolasa otro rindu, kas satur text jeb tekstu
         return (first_pattern, second_text) # Atgriež abas līnijas vienā    
-
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
