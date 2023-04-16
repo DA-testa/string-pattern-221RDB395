@@ -16,12 +16,10 @@ def read_input():
             second_text = file.readline().strip()  # Nolasa otro rindu, kas satur text jeb tekstu
         return (first_pattern, second_text) # Atgriež abas līnijas vienā    
 
-def print_occurrences(output):
-    # this function should control output, it doesn't need any return
+def print_occurrences(output): # Izvade
     print(' '.join(map(str, output)))
 
-def get_occurrences(pattern, text):
-    # this function should find the occurances using Rabin Karp alghoritm 
+def get_occurrences(pattern, text): # Rabin–Karp’s algoritms
     p = len(pattern)
     t = len(text)
 
@@ -37,10 +35,8 @@ def get_occurrences(pattern, text):
         if i < t-p:
             th = hash(text[i+1:i+p+1])
     
-
     # and return an iterable variable
     return occurrences
 
-# this part launches the functions
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
