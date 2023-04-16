@@ -30,7 +30,7 @@ def get_occurrences(pattern, text): # Rabin–Karp’s algoritms.
     text_hash = hash(text[:pattern_length]) # text hash
 
     for i in range(text_length-pattern_length+1):
-        if pattern_hash == text_hash and text[i:i+p] == pattern:
+        if pattern_hash == text_hash and text[i:i+pattern_length] == pattern:
             list_of_symbols.append(i) # tad tiek pievienots sarakstam
 
         if i < text_length-pattern_length:
