@@ -35,8 +35,8 @@ def print_occurrences(output):
 
 def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
-    pattern = len(first_line)
-    text = len(second_line)
+    p = len(pattern)
+    t = len(text)
 
     occurences = []
 
