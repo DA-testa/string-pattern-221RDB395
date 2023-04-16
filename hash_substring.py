@@ -38,21 +38,21 @@ def get_occurrences(pattern, text):
     p = len(pattern)
     t = len(text)
 
-    occurences = []
+    occurrences = []
 
     ph = hash(pattern) #pattern hash
     th = hash(text[:p]) # text hash
 
     for i in range(t-p+1):
         if ph == th and text[i:i+p] == pattern:
-            occurences.append(i)
+            occurrences.append(i)
 
         if i < t-p:
             th = hash(text[i+1:i+p+1])
     
 
     # and return an iterable variable
-    return occurences
+    return occurrences
 
 # this part launches the functions
 if __name__ == '__main__':
