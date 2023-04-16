@@ -8,14 +8,14 @@ def read_input():
     if "I" in ievade: 
         first_line = input().strip() 
         second_line = input().strip()
-        
+        return (first_line, second_line)    
 
     if "F" in ievade: 
         ievade = "tests/06" 
         with open(ievade) as file: 
             first_line = file.readline().strip()  # pattern
             second_line = file.readline().strip()  # text
-               
+        return (first_line, second_line)    
 
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
