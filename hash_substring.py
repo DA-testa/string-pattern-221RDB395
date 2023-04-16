@@ -25,15 +25,15 @@ def get_occurrences(pattern, text): # Rabin–Karp’s algoritms
 
     occurrences = []
 
-    ph = hash(pattern) #pattern hash
-    th = hash(text[:p]) # text hash
+    pattern_hash = hash(pattern) #pattern hash
+    text_hash = hash(text[:p]) # text hash
 
     for i in range(t-p+1):
-        if ph == th and text[i:i+p] == pattern:
+        if pattern_hash == text_hash and text[i:i+p] == pattern:
             occurrences.append(i)
 
         if i < t-p:
-            th = hash(text[i+1:i+p+1])
+            text_hash = hash(text[i+1:i+p+1])
     
     # and return an iterable variable
     return occurrences
