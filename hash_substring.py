@@ -1,5 +1,5 @@
 # python3
-# 221RDB395 Anastasija Bondare 13.grupa
+
 
 def read_input():
    
@@ -12,7 +12,7 @@ def read_input():
 
     if "F" in ievade: 
         ievade = "tests/06" 
-        with open(ievade, 'r') as file: 
+        with open(ievade) as file: 
             first_line = file.readline().strip()  # pattern
             second_line = file.readline().strip()  # text
                
@@ -29,36 +29,31 @@ def read_input():
     # this is the sample return, notice the rstrip function
     return (input().rstrip(), input().rstrip())
 
-#def print_occurrences(output):
+def print_occurrences(output):
     # this function should control output, it doesn't need any return
-    #print(' '.join(map(str, output)))
+    print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
-    p = len(pattern)
-    t = len(text)
+    pattern = len(first_line)
+    text = len(second_line)
 
-    count = 0
+    occurences = []
 
-    for i in range(0,t-p+1):
-        found = True
-        for j in range (0, p):
-            if pattern[j] != text[i+j]:
-                found = False
-                break
-        if found:
-            count += 1
+    ph = hash(pattern) #pattern hash
+    th = hash(text[:p]) # text hash
+
+    for i in range(t-p+1):
+        if ph == th and text[i:i+p] == pattern:
+            occurences.append(i)
+
+        if i < t-p:
+            th = hash(text[i+1:i+p+1])
     
-    if not count == 0:
-        print count
-        
-
 
     # and return an iterable variable
-    return [0]
-
+    return occurences
 
 # this part launches the functions
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
-
