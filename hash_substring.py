@@ -1,21 +1,20 @@
 # python3
-
+# 221RDB395 Anastasija Bondare 13.grupa
 
 def read_input():
    
-    ievade = input()
+    ievade = input() # Pārbaudes ievade burtiem "I" un "F"
 
-    if "I" in ievade: 
-        first_line = input().strip() 
-        second_line = input().strip()
-        return (first_line, second_line)    
+    if "I" in ievade: # Ja ievadē burts "I"
+        first_pattern = input().strip() # Ievada pirmo rindu, kas satur pattern jeb fragmentu
+        second_text = input().strip() # Ievada orto rindu, kas satur text jeb tekstu
+        return (first_pattern, second_text) # Atgriež abas līnijas vienā
 
     if "F" in ievade: 
-        ievade = "tests/06" 
-        with open(ievade) as file: 
+        with open("tests/06") as file: 
             first_line = file.readline().strip()  # pattern
             second_line = file.readline().strip()  # text
-        return (first_line, second_line)    
+        return (first_line, second_line) # Atgriež abas līnijas vienā    
 
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
@@ -27,7 +26,7 @@ def read_input():
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    return (input().rstrip(), input().rstrip())
+    #return (input().rstrip(), input().rstrip())
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
