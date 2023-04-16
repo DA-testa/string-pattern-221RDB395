@@ -31,12 +31,12 @@ def get_occurrences(pattern, text): # Rabin–Karp’s algoritms.
     # lai varētu pēc tam piešķirt text_hash atslēgu jeb vērtību
 
     for i in range(text_length - pattern_length + 1): # Iziet cauri virknēm, meklējot sakritības
-        if pattern_hash == text_hash and text[i : i + pattern_length] == pattern: # Pārbauda, vai pattern_hash vērtība sakrīt ar text_hash vērtību 
-        # un pārbauda, vai teksta virkne, kas sākas i pozīcijā un beidzās i + pattern_length sakrīt ar pattern
+        if text[i : i + pattern_length] == pattern and pattern_hash == text_hash: # Pārbauda, vai teksta virkne, kas sākas i pozīcijā un beidzās i + pattern_length sakrīt ar pattern
+        #  un pārbauda, vai pattern_hash vērtība sakrīt ar text_hash vērtību  
             list_of_symbols.append(i) # Ja abi apgalvojumi sakrīt, tad pievieno sarakstam i-tās pozīcijas vērtības klāt
 
-        if i < text_length-pattern_length: # Ja i vērtība ir mazāka par atlikušo virkņu garumu
-            text_hash = hash(text[i + 1 : i + pattern_length + 1]) # tad izveido jaunu text_hash vērtību, kas atspoguļo virkini no i+1 līdz pattern_length + 1 
+        if text_length-pattern_length > i: # Ja atlikušā virknes garums ir lielāks par i,
+            text_hash = hash(text[i + 1 : i + pattern_length + 1]) # tad izveido jaunu text_hash vērtību, kas atspoguļo virkni no sākuma i+1 līdz beigām pattern_length + 1 
     
     return list_of_symbols # Atgriež visu sarakstu ar visām sakristajām vērtībām
 
