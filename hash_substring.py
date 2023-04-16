@@ -26,17 +26,19 @@ def get_occurrences(pattern, text): # Rabin–Karp’s algoritms.
 
     list_of_symbols = [] # Tiek izveidots saraksts, kas glabās sakristās vērtības - simbolus, ciparus,burtus.
 
-    pattern_hash = hash(pattern) #pattern hash
-    text_hash = hash(text[:pattern_length]) # text hash
+    pattern_hash = hash(pattern) # Tiek piešķirta vērtība jeb atslēga katram pattern_hash. 
+    text_hash = hash(text[: pattern_length]) # Tiek samazinināta vai pielīdzināta text_length ar pattern_length,
+    # lai varētu pēc tam piešķirt text_hash atslēgu jeb vērtību
 
-    for i in range(text_length-pattern_length+1):
-        if pattern_hash == text_hash and text[i:i+pattern_length] == pattern:
-            list_of_symbols.append(i) # tad tiek pievienots sarakstam
+    for i in range(text_length - pattern_length + 1): # Iziet cauri virknēm, meklējot sakritības
+        if pattern_hash == text_hash and text[i : i + pattern_length] == pattern: # Pārbauda, vai pattern_hash vērtība sakrīt ar text_hash vērtību 
+        # un pārbauda, vai teksta virkne, kas sākas i pozīcijā un beidzās i + pattern_length sakrīt ar pattern
+            list_of_symbols.append(i) # Ja abi apgalvojumi sakrīt, tad pievieno sarakstam i-tās pozīcijas vērtības klāt
 
-        if i < text_length-pattern_length:
-            text_hash = hash(text[i+1:i+pattern_length+1])
+        if i < text_length-pattern_length: # Ja i vērtība ir mazāka par atlikušo virkņu garumu
+            text_hash = hash(text[i + 1 : i + pattern_length + 1]) # tad izveido jaunu text_hash vērtību, kas atspoguļo virkini no i+1 līdz pattern_length + 1 
     
-    return list_of_symbols
+    return list_of_symbols # Atgriež visu sarakstu ar visām sakristajām vērtībām
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
